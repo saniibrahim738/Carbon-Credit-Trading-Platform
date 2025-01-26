@@ -13,3 +13,5 @@ I
 contracts/offset-nft.clar,9/8/988067aed72050141986dd3dd5d224b951c6b613
 H
 tests/offset-nft.test.ts,e/0/e04a7dcd2db80ee4fab143189781caeb9d966371
+M
+contracts/offset-project.clar,4/a/4aaa2653f05f415c5684df411bd8d92ca2ecfe6e
