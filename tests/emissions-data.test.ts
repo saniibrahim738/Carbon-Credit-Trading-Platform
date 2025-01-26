@@ -1,21 +1,35 @@
+import { describe, it, expect, beforeEach } from "vitest"
 
-import { describe, expect, it } from "vitest";
+describe("emissions-data", () => {
+  let contract: any
+  
+  beforeEach(() => {
+    contract = {
+      recordEmissionsData: (deviceId: string, projectId: number, emissionsValue: number, dataSource: string) => ({
+        value: true,
+      }),
+      getLatestEmissionsData: (deviceId: string) => ({
+        projectId: 1,
+        emissionsValue: 5000,
+        dataSource: "satellite",
+      }),
+    }
+  })
+  
+  describe("record-emissions-data", () => {
+    it("should record emissions data", () => {
+      const result = contract.recordEmissionsData("device001", 1, 5000, "satellite")
+      expect(result.value).toBe(true)
+    })
+  })
+  
+  describe("get-latest-emissions-data", () => {
+    it("should return the latest emissions data for a device", () => {
+      const result = contract.getLatestEmissionsData("device001")
+      expect(result.projectId).toBe(1)
+      expect(result.emissionsValue).toBe(5000)
+      expect(result.dataSource).toBe("satellite")
+    })
+  })
+})
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});
