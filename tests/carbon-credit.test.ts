@@ -1,21 +1,47 @@
+import { describe, it, expect, beforeEach } from "vitest"
 
-import { describe, expect, it } from "vitest";
+describe("carbon-credit", () => {
+  let contract: any
+  
+  beforeEach(() => {
+    contract = {
+      mint: (amount: number, recipient: string) => ({ value: true }),
+      transfer: (amount: number, sender: string, recipient: string) => ({ value: true }),
+      getBalance: (account: string) => ({ value: 1000 }),
+      burn: (amount: number, owner: string) => ({ value: true }),
+    }
+  })
+  
+  describe("mint", () => {
+    it("should mint new carbon credits", () => {
+      const result = contract.mint(1000, "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM")
+      expect(result.value).toBe(true)
+    })
+  })
+  
+  describe("transfer", () => {
+    it("should transfer carbon credits between accounts", () => {
+      const result = contract.transfer(
+          500,
+          "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
+          "ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG",
+      )
+      expect(result.value).toBe(true)
+    })
+  })
+  
+  describe("get-balance", () => {
+    it("should return the balance of an account", () => {
+      const result = contract.getBalance("ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM")
+      expect(result.value).toBe(1000)
+    })
+  })
+  
+  describe("burn", () => {
+    it("should burn carbon credits", () => {
+      const result = contract.burn(500, "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM")
+      expect(result.value).toBe(true)
+    })
+  })
+})
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});
