@@ -9,3 +9,5 @@ M
 contracts/emissions-data.clar,2/5/2539594d50ed6fa2046f04501f5e0a5d514de42a
 L
 tests/emissions-data.test.ts,5/2/52bce10c528b52360e7e6d363f30ff6222869209
+I
+contracts/offset-nft.clar,9/8/988067aed72050141986dd3dd5d224b951c6b613
