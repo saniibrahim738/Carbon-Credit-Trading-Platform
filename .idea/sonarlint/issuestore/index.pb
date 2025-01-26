@@ -11,3 +11,5 @@ L
 tests/emissions-data.test.ts,5/2/52bce10c528b52360e7e6d363f30ff6222869209
 I
 contracts/offset-nft.clar,9/8/988067aed72050141986dd3dd5d224b951c6b613
+H
+tests/offset-nft.test.ts,e/0/e04a7dcd2db80ee4fab143189781caeb9d966371
