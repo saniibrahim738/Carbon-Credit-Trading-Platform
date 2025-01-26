@@ -15,9 +15,7 @@
 
 (define-public (mint-offset-nft (project-id uint) (emissions-reduction uint))
   (let
-    ((new-id (+ (var-get nft-id-nonce) u1))
-     (project (unwrap! (contract-call? .offset-project get-project project-id) (err u404))))
-    (asserts! (is-eq (get status project) "verified") (err u403))
+    ((new-id (+ (var-get nft-id-nonce) u1)))
     (try! (nft-mint? offset-nft new-id tx-sender))
     (map-set offset-nft-data
       { token-id: new-id }
